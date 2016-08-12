@@ -1,0 +1,31 @@
+{
+	"Loss": [
+  {
+    "id": "1be2a99a-20ef-42a0-a687-c0476fda6815",
+    "createdAt": 1470389249795,
+    "lastModifiedAt": 1470389249795,
+    "version": 1,
+    "lossNo": 202,
+    "text": "Mein 1. Schaden",
+    "customerReference": "CustomerReference"
+  },
+  {
+    "id": "ba6705cd-a063-4700-a440-e62f5caab368",
+    "createdAt": 1470389396659,
+    "lastModifiedAt": 1470389396659,
+    "version": 1,
+    "lossNo": 203,
+    "text": "Mein 2. Schaden",
+    "customerReference": "CustomerReference"
+  },
+  {
+    "id": "34e21dbd-906e-49ca-a327-c3ae78133699",
+    "createdAt": 1470893137155,
+    "lastModifiedAt": 1470893137155,
+    "version": 1,
+    "lossNo": 251,
+    "text": "Mein 3. Schaden",
+    "customerReference": "CustomerReference"
+  }
+]
+}

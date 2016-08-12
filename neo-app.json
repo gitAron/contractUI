@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "index.html",
+  "welcomeFile": "/webapp/index.html",
   "routes": [
     {
       "path": "/resources",
@@ -27,5 +27,6 @@
     	},
     	"description": "findLoss API"
     }
-  ]
+  ],
+  "sendWelcomeFileRedirect": true
 }
