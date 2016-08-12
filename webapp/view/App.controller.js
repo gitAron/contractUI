@@ -8,11 +8,12 @@ sap.ui.controller("sap.ui.demo.myFiori.view.App", {
 	to : function (pageId, context) {
 		
 		var app = this.getView().app;
+		var page;
 		
 		// load page on demand
 		var master = ("Master" === pageId);
 		if (app.getPage(pageId, master) === null) {
-			var page = sap.ui.view({
+			page = sap.ui.view({
 				id : pageId,
 				viewName : "sap.ui.demo.myFiori.view." + pageId,
 				type : "XML"
@@ -27,7 +28,7 @@ sap.ui.controller("sap.ui.demo.myFiori.view.App", {
 		
 		// set data context on the page
 		if (context) {
-			var page = app.getPage(pageId);
+			page = app.getPage(pageId);
 			page.setBindingContext(context);
 		}
 	},

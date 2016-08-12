@@ -3,7 +3,7 @@ jQuery.sap.declare("sap.ui.demo.myFiori.util.Grouper");
 sap.ui.demo.myFiori.util.Grouper = {
 	
 	BillingStatus : function (oContext) {
-		var status = oContext.getProperty("BillingStatus");
+		var status = oContext.getProperty("lastModifiedAt");
 		return {
 			key: status,
 			text: status
@@ -11,18 +11,17 @@ sap.ui.demo.myFiori.util.Grouper = {
 	},
 	
 	GrossAmount : function (oContext) {
-		var price = oContext.getProperty("GrossAmount");
-		var currency = oContext.getProperty("CurrencyCode");
+		var number = oContext.getProperty("lossNo");
 		var key, text;
-		if (price <= 5000) {
-			key = "A-LE10";
-			text = "< 5000 " + currency;
-		} else if (price <= 10000) {
-			key = "B-LE100";
-			text = "< 10.000  " + currency;
+		if (number <= 25) {
+			key = "Key_A";
+			text = "loss number <= 25 " ;
+		} else if (number <= 75) {
+			key = "Key_B";
+			text = "loss number <= 75  ";
 		} else {
-			key = "C-GT100";
-			text = "> 10.000 " + currency;
+			key = "Key_C";
+			text = "loss number > 75 ";
 		}
 		return {
 			key: key,

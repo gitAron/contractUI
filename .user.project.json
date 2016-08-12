@@ -1,7 +1,7 @@
 {
   "run": [
     {
-      "filePath": "/index.html",
+      "filePath": "/webapp/index.html",
       "previewMode": 1,
       "dataMode": 1,
       "workspace": "withoutWorkspace",
@@ -12,10 +12,10 @@
       "hashParameter": "",
       "backendSystem": [],
       "_metadata": {
-        "runnerId": "webapprunner",
         "id": 6392515,
+        "runnerId": "webapprunner",
         "displayName": "Run index.html",
-        "lastRunTimeStamp": 1470315400330
+        "lastRunTimeStamp": 1470992963843
       }
     }
   ]
