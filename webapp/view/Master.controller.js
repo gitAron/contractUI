@@ -1,22 +1,42 @@
 jQuery.sap.require("sap.ui.demo.myFiori.util.Formatter");
 jQuery.sap.require("sap.ui.demo.myFiori.util.Grouper");
+jQuery.sap.require("sap.m.MessageToast");
 
 sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 
-	onExit : function () {
+	onExit: function() {
 		if (this._lineItemViewDialog) {
 			this._lineItemViewDialog.destroy();
 			this._lineItemViewDialog = null;
 		}
 	},
-	
-	handleListItemPress : function (evt) {
+
+	handleListItemPress: function(evt) {
 		var context = evt.getSource().getBindingContext();
 		this.nav.to("Detail", context);
 	},
-	
-	handleSearch : function (evt) {
-		
+
+	_getDialog: function() {
+		if (!this._oDialog) {
+			this._oDialog = sap.ui.xmlfragment("sap.ui.demo.myFiori.view.Dialog", this);
+			this.getView().addDependent(this._oDialog);
+		}
+		return this._oDialog;
+	},
+	handleOpenDialog: function() {
+		this._getDialog().open();
+	},
+	handleOpenDialogFilter: function() {
+		this._getDialog().open("filter");
+	},
+	handleConfirm: function(oEvent) {
+		if (oEvent.getParameters().filterString) {
+			sap.m.MessageToast.show(oEvent.getParameters().filterString);
+		}
+	},
+
+	handleSearch: function(evt) {
+
 		// create model filter
 		var filters = [];
 		var query = evt.getParameter("query");
@@ -24,19 +44,19 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 			var filter = new sap.ui.model.Filter("text", sap.ui.model.FilterOperator.Contains, query);
 			filters.push(filter);
 		}
-		
+
 		// update list binding
 		var list = this.getView().byId("list");
 		var binding = list.getBinding("items");
 		binding.filter(filters);
 	},
-	
-	handleFilterSettings: function (evt) {
-		
+
+	handleFilterSettings: function(evt) {
+
 	},
-	
-	liveSearch : function (evt) {
-		
+
+	liveSearch: function(evt) {
+
 		// create model filter
 		var filters = [];
 		var query = evt.getSource().getValue();
@@ -44,40 +64,40 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 			var filter = new sap.ui.model.Filter("text", sap.ui.model.FilterOperator.Contains, query);
 			filters.push(filter);
 		}
-		
+
 		// update list binding
 		var list = this.getView().byId("list");
 		var binding = list.getBinding("items");
 		binding.filter(filters);
 	},
-	
-	handleListSelect : function (evt) {
+
+	handleListSelect: function(evt) {
 		var context = evt.getParameter("listItem").getBindingContext();
 		this.nav.to("Detail", context);
 	},
 
-	handleViewSettings : function (evt) {
+	handleViewSettings: function(evt) {
 
 		// create dialog
 		var that = this;
 		if (!this._lineItemViewDialog) {
 			this._lineItemViewDialog = new sap.m.ViewSettingsDialog({
-				groupItems : [
+				groupItems: [
 					new sap.m.ViewSettingsItem({
-						text : "Loss Number",
-						key : "lossNo"
+						text: "Loss Number",
+						key: "lossNo"
 					}),
 					new sap.m.ViewSettingsItem({
-						text : "Created at",
-						key : "createdAt"
+						text: "Created at",
+						key: "createdAt"
 					}),
 					new sap.m.ViewSettingsItem({
-						text : "Last Modified at",
-						key : "lastModifiedAt"
+						text: "Last Modified at",
+						key: "lastModifiedAt"
 					})
-					
+
 				],
-				confirm : function (evt) {
+				confirm: function(evt) {
 					var aSorters = [];
 					var mParams = evt.getParameters();
 					if (mParams.groupItem) {
@@ -91,7 +111,7 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 				}
 			});
 		}
-		
+
 		// open dialog
 		this._lineItemViewDialog.open();
 	}
