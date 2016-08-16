@@ -31,6 +31,10 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 		binding.filter(filters);
 	},
 	
+	handleFilterSettings: function (evt) {
+		
+	},
+	
 	liveSearch : function (evt) {
 		
 		// create model filter
