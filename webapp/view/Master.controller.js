@@ -31,6 +31,22 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 		binding.filter(filters);
 	},
 	
+	liveSearch : function (evt) {
+		
+		// create model filter
+		var filters = [];
+		var query = evt.getSource().getValue();
+		if (query && query.length > 0) {
+			var filter = new sap.ui.model.Filter("text", sap.ui.model.FilterOperator.Contains, query);
+			filters.push(filter);
+		}
+		
+		// update list binding
+		var list = this.getView().byId("list");
+		var binding = list.getBinding("items");
+		binding.filter(filters);
+	},
+	
 	handleListSelect : function (evt) {
 		var context = evt.getParameter("listItem").getBindingContext();
 		this.nav.to("Detail", context);
@@ -44,13 +60,18 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 			this._lineItemViewDialog = new sap.m.ViewSettingsDialog({
 				groupItems : [
 					new sap.m.ViewSettingsItem({
-						text : "Price",
+						text : "Loss Number",
 						key : "lossNo"
 					}),
 					new sap.m.ViewSettingsItem({
-						text : "Status",
+						text : "Created at",
+						key : "createdAt"
+					}),
+					new sap.m.ViewSettingsItem({
+						text : "Last Modified at",
 						key : "lastModifiedAt"
 					})
+					
 				],
 				confirm : function (evt) {
 					var aSorters = [];

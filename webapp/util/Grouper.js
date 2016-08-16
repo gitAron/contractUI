@@ -2,7 +2,23 @@ jQuery.sap.declare("sap.ui.demo.myFiori.util.Grouper");
 
 sap.ui.demo.myFiori.util.Grouper = {
 	
-	BillingStatus : function (oContext) {
+	createdAt : function (oContext) {
+		var status = oContext.getProperty("createdAt");
+		var key, text;
+		if (status <= 1470725528416) {
+			key = "Key_A";
+			text = "loss number <= 1470725528416 " ;
+		} else {
+			key = "Key_B";
+			text = "loss number > 1470725528416 ";
+		}
+		return {
+			key: key,
+			text: text
+		};
+	},
+	
+	lastModifiedAt : function (oContext) {
 		var status = oContext.getProperty("lastModifiedAt");
 		var key, text;
 		if (status <= 1470725545443) {
@@ -21,7 +37,7 @@ sap.ui.demo.myFiori.util.Grouper = {
 		};
 	},
 	
-	GrossAmount : function (oContext) {
+	lossNo : function (oContext) {
 		var number = oContext.getProperty("lossNo");
 		var key, text;
 		if (number <= 25) {

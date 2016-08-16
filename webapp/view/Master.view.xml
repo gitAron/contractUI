@@ -8,7 +8,9 @@
 			<Bar>
 				<contentLeft>
 					<SearchField
+						liveChange="liveSearch"
 						search="handleSearch"
+
 						width="100%" >
 					</SearchField>
 				</contentLeft>
