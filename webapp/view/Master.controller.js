@@ -64,15 +64,11 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 						key : "lossNo"
 					}),
 					new sap.m.ViewSettingsItem({
-<<<<<<< HEAD
 						text : "Created at",
 						key : "createdAt"
 					}),
 					new sap.m.ViewSettingsItem({
 						text : "Last Modified at",
-=======
-						text : "Last Modified At",
->>>>>>> branch 'master' of https://github.com/Haensn/lossUI.git
 						key : "lastModifiedAt"
 					})
 					
