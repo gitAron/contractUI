@@ -29,11 +29,7 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 	handleOpenDialogFilter: function() {
 		this._getDialog().open("filter");
 	},
-	handleConfirm: function(oEvent) {
-		if (oEvent.getParameters().filterString) {
-			sap.m.MessageToast.show(oEvent.getParameters().filterString);
-		}
-	},
+	
 
 	handleSearch: function(evt) {
 
@@ -75,6 +71,21 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 		var context = evt.getParameter("listItem").getBindingContext();
 		this.nav.to("Detail", context);
 	},
+	
+	handleConfirm: function(evt) {
+		var that = this;
+		var aSorters = [];
+		var mParams = evt.getParameters();
+		if (mParams.sortItem) {
+			var sPath = mParams.sortItem.getKey();
+			var bDescending = mParams.sortDescending;
+			var vGroup = sap.ui.demo.myFiori.util.Grouper[sPath];
+			aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
+		}
+		var oBinding = that.getView().byId("list").getBinding("items");
+		oBinding.sort(aSorters);
+	},
+	
 
 	handleViewSettings: function(evt) {
 
@@ -96,8 +107,7 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 						key: "lastModifiedAt"
 					})
 
-				],
-				confirm: function(evt) {
+				], confirm: function(evt) {
 					var aSorters = [];
 					var mParams = evt.getParameters();
 					if (mParams.groupItem) {

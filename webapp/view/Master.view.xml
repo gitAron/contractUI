@@ -14,7 +14,6 @@
 			<Bar>
 				<contentRight>
 					<Button icon="sap-icon://filter" press="handleOpenDialog"/>
-					<Button icon="sap-icon://group-2" press="handleViewSettings"/>
 				</contentRight>
 			</Bar>
 		</footer>

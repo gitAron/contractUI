@@ -4,9 +4,9 @@
 	<ViewSettingsDialog
 		confirm="handleConfirm">
 		<sortItems>
-			<ViewSettingsItem text="Field 1" key="1" selected="true" />
-			<ViewSettingsItem text="Field 2" key="2" />
-			<ViewSettingsItem text="Field 3" key="3" />
+			<ViewSettingsItem text="Loss Number" key="lossNo" selected="true" />
+			<ViewSettingsItem text="Created at" key="createdAt" />
+			<ViewSettingsItem text="Last Modified at" key="lastModifiedAt" />
 		</sortItems>
 		<groupItems>
 			<ViewSettingsItem text="Field 1" key="1" selected="true" />
