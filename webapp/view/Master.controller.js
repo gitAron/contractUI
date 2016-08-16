@@ -44,11 +44,11 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 			this._lineItemViewDialog = new sap.m.ViewSettingsDialog({
 				groupItems : [
 					new sap.m.ViewSettingsItem({
-						text : "Price",
+						text : "Loss Number",
 						key : "lossNo"
 					}),
 					new sap.m.ViewSettingsItem({
-						text : "Status",
+						text : "Last Modified At",
 						key : "lastModifiedAt"
 					})
 				],
