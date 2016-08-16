@@ -4,9 +4,20 @@ sap.ui.demo.myFiori.util.Grouper = {
 	
 	BillingStatus : function (oContext) {
 		var status = oContext.getProperty("lastModifiedAt");
+		var key, text;
+		if (status <= 1470725545443) {
+			key = "Key_A";
+			text = "loss number <= 1470725545443 " ;
+		} else if (status <= 1470810189290) {
+			key = "Key_B";
+			text = "loss number <= 1470810189290  ";
+		} else {
+			key = "Key_C";
+			text = "loss number > 1470810189290 ";
+		}
 		return {
-			key: status,
-			text: status
+			key: key,
+			text: text
 		};
 	},
 	

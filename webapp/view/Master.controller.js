@@ -45,11 +45,11 @@ sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 				groupItems : [
 					new sap.m.ViewSettingsItem({
 						text : "Price",
-						key : "GrossAmount"
+						key : "lossNo"
 					}),
 					new sap.m.ViewSettingsItem({
 						text : "Status",
-						key : "BillingStatus"
+						key : "lastModifiedAt"
 					})
 				],
 				confirm : function (evt) {
