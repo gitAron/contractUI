@@ -25,8 +25,8 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.myFiori.Component", {
 			//error: function(ts) {alert(ts.responseText)},
 			success: function(data) {
 
-				data = sap.ui.demo.myFiori.util.DateConverter.convertDates(data);
-
+				var data2 = sap.ui.demo.myFiori.util.DateConverter.convertDates(data);
+				data = data2;
 				// set data model on root view
 				var oModel = new sap.ui.model.json.JSONModel({
 					Loss: data
