@@ -1,4 +1,5 @@
 jQuery.sap.declare("sap.ui.demo.myFiori.Component");
+jQuery.sap.require("sap.ui.demo.myFiori.util.DateConverter");
 
 sap.ui.core.UIComponent.extend("sap.ui.demo.myFiori.Component", {
 
@@ -23,6 +24,8 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.myFiori.Component", {
 			//Debugging reasons
 			//error: function(ts) {alert(ts.responseText)},
 			success: function(data) {
+
+				data = sap.ui.demo.myFiori.util.DateConverter.convertDates(data);
 
 				// set data model on root view
 				var oModel = new sap.ui.model.json.JSONModel({
