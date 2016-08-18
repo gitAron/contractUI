@@ -1,4 +1,4 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout">
 	<ViewSettingsDialog confirm="handleConfirm">
 		<sortItems>
 			<ViewSettingsItem text="Loss Number" key="lossNo" selected="true"/>
@@ -10,34 +10,18 @@
 			<ViewSettingsItem text="Field 2" key="2"/>
 			<ViewSettingsItem text="Field 3" key="3"/>
 		</groupItems>
-		<filterItems>
-			<ViewSettingsFilterItem text="Field1" key="1">
-				<items>
-					<ViewSettingsItem text="Value A" key="1a"/>
-					<ViewSettingsItem text="Value B" key="1b"/>
-					<ViewSettingsItem text="Value C" key="1c"/>
-				</items>
-			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem text="Field2" key="2">
-				<items>
-					<ViewSettingsItem text="Value A" key="2a"/>
-					<ViewSettingsItem text="Value B" key="2b"/>
-					<ViewSettingsItem text="Value C" key="2c"/>
-				</items>
-			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem text="Field3" key="3">
-				<items>
-					<ViewSettingsItem text="Value A" key="3a"/>
-					<ViewSettingsItem text="Value B" key="3b"/>
-					<ViewSettingsItem text="Value C" key="3c"/>
-				</items>
-			</ViewSettingsFilterItem>
-		</filterItems>
 		<customTabs>
 			<ViewSettingsCustomTab id="example-settings" tooltip="Calendar" icon="sap-icon://calendar">
 				<content>
-					<u:Calendar id="calendar" select="handleCalendarSelect" intervalSelection="false" singleSelection="false"/>
-					<Button press="handleRemoveSelection" text="Remove All Selected Dates"/>
+					<l:VerticalLayout class="sapUiContentPadding" width="100%">
+						<l:HorizontalLayout class="sapUiSmallMargin">
+							<ComboBox items="{filterModel>/Filters}"> 
+								<core:Item key="{Filterkey}" text="{Filtername}"/>
+							</ComboBox>
+							<Button press="onDel" icon="sap-icon://delete"/>
+						</l:HorizontalLayout>
+						<Button press="onAdd" text="Add new Filter" width="100%"/>
+					</l:VerticalLayout>
 				</content>
 			</ViewSettingsCustomTab>
 		</customTabs>

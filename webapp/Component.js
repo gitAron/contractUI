@@ -28,7 +28,7 @@ sap.ui.define([
 				}
 				// set data model on root view
 				var oModel = new sap.ui.model.json.JSONModel({
-					Loss: data
+					"Loss": data
 				});
 				oView.setModel(oModel);
 			}

@@ -2,7 +2,7 @@ sap.ui.define([
 	"sap/ui/demo/myFiori/util/Grouper"
 ], function(Grouper) {
 	return sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
-
+		
 		onExit: function() {
 			if (this._lineItemViewDialog) {
 				this._lineItemViewDialog.destroy();
@@ -16,6 +16,7 @@ sap.ui.define([
 		},
 
 		_getDialog: function() {
+			//	this.test = "hallo";
 			if (!this._oDialog) {
 				this._oDialog = sap.ui.xmlfragment("sap.ui.demo.myFiori.view.Dialog", this);
 				this.getView().addDependent(this._oDialog);
@@ -23,6 +24,8 @@ sap.ui.define([
 			return this._oDialog;
 		},
 		handleOpenDialog: function() {
+			var oModel = new sap.ui.model.json.JSONModel("model/Filters.json");
+				this.getView().setModel(oModel, "filterModel");
 			this._getDialog().open();
 		},
 		handleOpenDialogFilter: function() {
