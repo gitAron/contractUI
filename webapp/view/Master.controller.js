@@ -2,7 +2,15 @@ sap.ui.define([
 	"sap/ui/demo/myFiori/util/Grouper"
 ], function(Grouper) {
 	return sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
-
+		
+		filters : [{
+				"filterName": "Customer Reference"
+			}, {
+				"filterName": "Loss Number"
+			}, {
+				"filterName": "Created At"
+			}],
+		
 		onExit: function() {
 			if (this._lineItemViewDialog) {
 				this._lineItemViewDialog.destroy();
@@ -16,6 +24,7 @@ sap.ui.define([
 		},
 
 		_getDialog: function() {
+			//	this.test = "hallo";
 			if (!this._oDialog) {
 				this._oDialog = sap.ui.xmlfragment("sap.ui.demo.myFiori.view.Dialog", this);
 				this.getView().addDependent(this._oDialog);

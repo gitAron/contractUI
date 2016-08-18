@@ -1,0 +1,12 @@
+{
+	"Filters": [{
+		"filterkey": "customerReference",
+		"filtername": "Customer Reference"
+	}, {
+		"filterkey": "lossNo",
+		"filtername": "Loss Number"
+	}, {
+		"filterkey": "createdAt",
+		"filtername": "Created At"
+	}]
+}

@@ -64,9 +64,9 @@
 				}
 			},
 			
-			"address": {
+			"filters": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/Address.json"
+				"uri": "/model/Filters.json"
 			}
 
 		},
