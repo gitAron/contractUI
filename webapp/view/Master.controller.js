@@ -74,17 +74,34 @@ sap.ui.define([
 			var that = this;
 			var aSorters = [];
 			var mParams = evt.getParameters();
-			if (mParams.sortItem) {
-				var sPath = mParams.sortItem.getKey();
-				var bDescending = mParams.sortDescending;
-				var vGroup = Grouper[sPath];
-				aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
-			}
+			
+			var sPath;
+			var bDescending;
+			var vGroup;
+			
 			var oBinding = that.getView().byId("list").getBinding("items");
+		
+			if (mParams.groupItem) {
+				 sPath = mParams.groupItem.getKey();
+				 bDescending = mParams.groupDescending;
+				 vGroup = function(oContext) {
+	             var name = oContext.getProperty("customerReference");
+	             return {
+	                 key: name,
+	                 text: name
+	             };
+	         };
+	         	aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
+			}
+	      /* 	if (mParams.sortItem) {*/
+				sPath = mParams.sortItem.getKey();
+				bDescending = mParams.sortDescending;
+				aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
+			
 			oBinding.sort(aSorters);
-		},
-
-		handleViewSettings: function(evt) {
+		
+		}
+	/*	handleViewSettings: function(evt) {
 
 			// create dialog
 			var that = this;
@@ -122,6 +139,6 @@ sap.ui.define([
 
 			// open dialog
 			this._lineItemViewDialog.open();
-		}
+		}*/
 	});
 });
