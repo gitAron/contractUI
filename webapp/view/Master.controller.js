@@ -3,14 +3,6 @@ sap.ui.define([
 ], function(Grouper) {
 	return sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
 		
-		filters : [{
-				"filterName": "Customer Reference"
-			}, {
-				"filterName": "Loss Number"
-			}, {
-				"filterName": "Created At"
-			}],
-		
 		onExit: function() {
 			if (this._lineItemViewDialog) {
 				this._lineItemViewDialog.destroy();
@@ -32,6 +24,8 @@ sap.ui.define([
 			return this._oDialog;
 		},
 		handleOpenDialog: function() {
+			var oModel = new sap.ui.model.json.JSONModel("model/Filters.json");
+				this.getView().setModel(oModel, "filterModel");
 			this._getDialog().open();
 		},
 		handleOpenDialogFilter: function() {

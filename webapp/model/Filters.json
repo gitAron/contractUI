@@ -1,12 +1,15 @@
 {
 	"Filters": [{
-		"filterkey": "customerReference",
-		"filtername": "Customer Reference"
+		"Filterkey": "customerReference",
+		"Filtername": "Customer Reference"
 	}, {
-		"filterkey": "lossNo",
-		"filtername": "Loss Number"
+		"Filterkey": "lossNo",
+		"Filtername": "Loss Number"
 	}, {
-		"filterkey": "createdAt",
-		"filtername": "Created At"
+		"Filterkey": "lastModifiedAt",
+		"Filtername": "Last Modified At"
+	}, {
+		"Filterkey": "createdAt",
+		"Filtername": "Created At"
 	}]
 }

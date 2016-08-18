@@ -15,12 +15,12 @@
 				<content>
 					<l:VerticalLayout class="sapUiContentPadding" width="100%">
 						<l:HorizontalLayout class="sapUiSmallMargin">
-							<ComboBox items="{filters/Filters}"> 
-								<core:Item key="{filterkey}" text="{filtername}"/>
+							<ComboBox items="{filterModel>/Filters}"> 
+								<core:Item key="{Filterkey}" text="{Filtername}"/>
 							</ComboBox>
-							<Button press="onDel" icon="sap-icon://delete" />
+							<Button press="onDel" icon="sap-icon://delete"/>
 						</l:HorizontalLayout>
-						<Button press="onAdd" text="Add new Filter" width="100%" />
+						<Button press="onAdd" text="Add new Filter" width="100%"/>
 					</l:VerticalLayout>
 				</content>
 			</ViewSettingsCustomTab>
