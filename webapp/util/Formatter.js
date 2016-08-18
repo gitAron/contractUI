@@ -1,5 +1,4 @@
 jQuery.sap.declare("sap.ui.demo.myFiori.util.Formatter");
-
 jQuery.sap.require("sap.ui.core.format.DateFormat");
 
 sap.ui.demo.myFiori.util.Formatter = {
@@ -16,8 +15,9 @@ sap.ui.demo.myFiori.util.Formatter = {
 	
 	date : function (value) {
 		if (value) {
-			var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({pattern: "yyyy-MM-dd"}); 
-			return oDateFormat.format(new Date(value));
+			var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({pattern: "MM/dd/yyyy HH:mm:ss"}); 
+			oDateFormat.parse(new Date(value));
+			return oDateFormat;
 		} else {
 			return value;
 		}

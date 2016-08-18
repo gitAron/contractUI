@@ -25,7 +25,7 @@
 						<Label text="ID:"/>
 						<Text text="{id}" />
 						<Label text="Created At:"/>
-						<Text text="{createdAt}" />
+						<Text text="{createdAtObject}" />
 						<Label text="Customer Reference"/>
 						<Text text="{customerReference}" />
 					</form:SimpleForm>

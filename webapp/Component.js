@@ -1,7 +1,6 @@
-jQuery.sap.declare("sap.ui.demo.myFiori.Component");
-jQuery.sap.require("sap.ui.demo.myFiori.util.DateConverter");
-
-sap.ui.core.UIComponent.extend("sap.ui.demo.myFiori.Component", {
+sap.ui.define([
+	], function () {
+		return sap.ui.core.UIComponent.extend("sap.ui.demo.myFiori.Component", {
 
 	createContent: function() {
 
@@ -24,9 +23,9 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.myFiori.Component", {
 			//Debugging reasons
 			//error: function(ts) {alert(ts.responseText)},
 			success: function(data) {
-
-				var data2 = sap.ui.demo.myFiori.util.DateConverter.convertDates(data);
-				data = data2;
+				for (var i = 0; i < data.length; ++i) {
+					data[i]["createdAtObject"] = new Date(data[i]["createdAt"]);
+				}
 				// set data model on root view
 				var oModel = new sap.ui.model.json.JSONModel({
 					Loss: data
@@ -54,4 +53,6 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.myFiori.Component", {
 		// done
 		return oView;
 	}
+	});
+
 });

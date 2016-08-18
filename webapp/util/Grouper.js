@@ -40,15 +40,15 @@ sap.ui.demo.myFiori.util.Grouper = {
 	lossNo : function (oContext) {
 		var number = oContext.getProperty("lossNo");
 		var key, text;
-		if (number <= 25) {
+		if (number <= 200) {
 			key = "Key_A";
-			text = "loss number <= 25 " ;
-		} else if (number <= 75) {
+			text = "loss number <= 200 " ;
+		} else if (number <= 250) {
 			key = "Key_B";
-			text = "loss number <= 75  ";
+			text = "loss number <= 250  ";
 		} else {
 			key = "Key_C";
-			text = "loss number > 75 ";
+			text = "loss number > 250 ";
 		}
 		return {
 			key: key,
