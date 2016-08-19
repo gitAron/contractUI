@@ -58,9 +58,10 @@ sap.ui.define([
 			if (query && query.length > 0) {
 				var filter1 = new sap.ui.model.Filter("id", sap.ui.model.FilterOperator.Contains, query);
 				var filter2 = new sap.ui.model.Filter("text", sap.ui.model.FilterOperator.Contains, query);
+				var filter3 = new sap.ui.model.Filter("lossNoObject", sap.ui.model.FilterOperator.Contains, query);
 
 				var filters = new sap.ui.model.Filter({
-					filters: [filter1, filter2],
+					filters: [filter1, filter2, filter3],
 					and: false
 				});
 			}

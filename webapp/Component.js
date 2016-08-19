@@ -26,6 +26,7 @@ sap.ui.define([
 				for (var i = 0; i < data.length; ++i) {
 					data[i]["createdAtObject"] = new Date(data[i]["createdAt"]);
 					data[i]["createdAtDay"] = data[i]["createdAtObject"].getDate(); 
+					data[i]["lossNoObject"] = String(data[i]["lossNo"]);
 				}
 				// set data model on root view
 				var oModel = new sap.ui.model.json.JSONModel({
