@@ -53,13 +53,11 @@ sap.ui.define([
 		},
 
 		liveSearch: function(evt) {
-
-			// create model filter
-			var filters = [];
 			var query = evt.getSource().getValue();
-			if (query && query.length > 0) {
-				var filter = new sap.ui.model.Filter("text", sap.ui.model.FilterOperator.Contains, query);
-				filters.push(filter);
+			if (query && query.length > 0) {				
+				var filter1 = new sap.ui.model.Filter("id", sap.ui.model.FilterOperator.Contains, query);
+				var filter2 = new sap.ui.model.Filter("text", sap.ui.model.FilterOperator.Contains, query);
+				var filters = new sap.ui.model.Filter({filters: [filter1, filter2], and: false});
 			}
 
 			// update list binding
