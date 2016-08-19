@@ -63,17 +63,15 @@
 					"bundleName": "TestAPI.i18n.i18n"
 				}
 			},
-			
 			"filters": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "/model/Filters.json"
 			}
-
-		},
-		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
-		}
+	},
+	"resources": {
+		"css": [{
+			"uri": "css/style.css"
+		}]
 	}
+}
 }

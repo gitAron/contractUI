@@ -2,7 +2,7 @@ sap.ui.define([
 	"sap/ui/demo/myFiori/util/Grouper"
 ], function(Grouper) {
 	return sap.ui.controller("sap.ui.demo.myFiori.view.Master", {
-		
+
 		onExit: function() {
 			if (this._lineItemViewDialog) {
 				this._lineItemViewDialog.destroy();
@@ -24,8 +24,9 @@ sap.ui.define([
 			return this._oDialog;
 		},
 		handleOpenDialog: function() {
-			var oModel = new sap.ui.model.json.JSONModel("model/Filters.json");
-				this.getView().setModel(oModel, "filterModel");
+			var oModel = new sap.ui.model.json.JSONModel();
+			oModel.loadData("model/Filters.json");
+			sap.ui.getCore().setModel(oModel, "filterModel");
 			this._getDialog().open();
 		},
 		handleOpenDialogFilter: function() {
@@ -54,10 +55,14 @@ sap.ui.define([
 
 		liveSearch: function(evt) {
 			var query = evt.getSource().getValue();
-			if (query && query.length > 0) {				
+			if (query && query.length > 0) {
 				var filter1 = new sap.ui.model.Filter("id", sap.ui.model.FilterOperator.Contains, query);
 				var filter2 = new sap.ui.model.Filter("text", sap.ui.model.FilterOperator.Contains, query);
-				var filters = new sap.ui.model.Filter({filters: [filter1, filter2], and: false});
+
+				var filters = new sap.ui.model.Filter({
+					filters: [filter1, filter2],
+					and: false
+				});
 			}
 
 			// update list binding
@@ -72,74 +77,74 @@ sap.ui.define([
 		},
 
 		handleConfirm: function(evt) {
-			var that = this;
-			var aSorters = [];
-			var mParams = evt.getParameters();
-			
-			var sPath;
-			var bDescending;
-			var vGroup;
-			
-			var oBinding = that.getView().byId("list").getBinding("items");
-		
-			if (mParams.groupItem) {
-				 sPath = mParams.groupItem.getKey();
-				 bDescending = mParams.groupDescending;
-				 vGroup = function(oContext) {
-	             var name = oContext.getProperty(mParams.groupItem.getKey());
-	             return {
-	                 key: name,
-	                 text: name
-	             };
-	         };
-	         	aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
-			}
-	      /* 	if (mParams.sortItem) {*/
+				var that = this;
+				var aSorters = [];
+				var mParams = evt.getParameters();
+
+				var sPath;
+				var bDescending;
+				var vGroup;
+
+				var oBinding = that.getView().byId("list").getBinding("items");
+
+				if (mParams.groupItem) {
+					sPath = mParams.groupItem.getKey();
+					bDescending = mParams.groupDescending;
+					vGroup = function(oContext) {
+						var name = oContext.getProperty(mParams.groupItem.getKey());
+						return {
+							key: name,
+							text: name
+						};
+					};
+					aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
+				}
+				/* 	if (mParams.sortItem) {*/
 				sPath = mParams.sortItem.getKey();
 				bDescending = mParams.sortDescending;
 				aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
-			
-			oBinding.sort(aSorters);
-		
-		}
-	/*	handleViewSettings: function(evt) {
 
-			// create dialog
-			var that = this;
-			if (!this._lineItemViewDialog) {
-				this._lineItemViewDialog = new sap.m.ViewSettingsDialog({
-					groupItems: [
-						new sap.m.ViewSettingsItem({
-							text: "Loss Number",
-							key: "lossNo"
-						}),
-						new sap.m.ViewSettingsItem({
-							text: "Created at",
-							key: "createdAt"
-						}),
-						new sap.m.ViewSettingsItem({
-							text: "Last Modified at",
-							key: "lastModifiedAt"
-						})
+				oBinding.sort(aSorters);
 
-					],
-					confirm: function(evt) {
-						var aSorters = [];
-						var mParams = evt.getParameters();
-						if (mParams.groupItem) {
-							var sPath = mParams.groupItem.getKey();
-							var bDescending = mParams.groupDescending;
-							var vGroup = Grouper[sPath];
-							aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
-						}
-						var oBinding = that.getView().byId("list").getBinding("items");
-						oBinding.sort(aSorters);
-					}
-				});
 			}
+			/*	handleViewSettings: function(evt) {
 
-			// open dialog
-			this._lineItemViewDialog.open();
-		}*/
+					// create dialog
+					var that = this;
+					if (!this._lineItemViewDialog) {
+						this._lineItemViewDialog = new sap.m.ViewSettingsDialog({
+							groupItems: [
+								new sap.m.ViewSettingsItem({
+									text: "Loss Number",
+									key: "lossNo"
+								}),
+								new sap.m.ViewSettingsItem({
+									text: "Created at",
+									key: "createdAt"
+								}),
+								new sap.m.ViewSettingsItem({
+									text: "Last Modified at",
+									key: "lastModifiedAt"
+								})
+
+							],
+							confirm: function(evt) {
+								var aSorters = [];
+								var mParams = evt.getParameters();
+								if (mParams.groupItem) {
+									var sPath = mParams.groupItem.getKey();
+									var bDescending = mParams.groupDescending;
+									var vGroup = Grouper[sPath];
+									aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
+								}
+								var oBinding = that.getView().byId("list").getBinding("items");
+								oBinding.sort(aSorters);
+							}
+						});
+					}
+
+					// open dialog
+					this._lineItemViewDialog.open();
+				}*/
 	});
 });

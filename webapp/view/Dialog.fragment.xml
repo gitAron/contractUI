@@ -15,9 +15,9 @@
 				<content>
 					<l:VerticalLayout class="sapUiContentPadding" width="100%">
 						<l:HorizontalLayout class="sapUiSmallMargin">
-							<ComboBox items="{filterModel>/Filters}"> 
-								<core:Item key="{Filterkey}" text="{Filtername}"/>
-							</ComboBox>
+							<ComboBox items="{filterModel>/Filters}">
+								<core:Item key="{filterModel>Filterkey}" text="{filterModel>Filtername}"/>
+								</ComboBox>
 							<Button press="onDel" icon="sap-icon://delete"/>
 						</l:HorizontalLayout>
 						<Button press="onAdd" text="Add new Filter" width="100%"/>
