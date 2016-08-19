@@ -86,7 +86,7 @@ sap.ui.define([
 				 sPath = mParams.groupItem.getKey();
 				 bDescending = mParams.groupDescending;
 				 vGroup = function(oContext) {
-	             var name = oContext.getProperty("customerReference");
+	             var name = oContext.getProperty(mParams.groupItem.getKey());
 	             return {
 	                 key: name,
 	                 text: name
